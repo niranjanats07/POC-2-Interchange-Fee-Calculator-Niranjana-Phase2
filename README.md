@@ -1,5 +1,10 @@
-# Interchange Fee Calculator
-###  | PoC-2| interchange-Fee-Calculator| Application | Interchange Fee Intelligence |
+**INFOCREON INTERNSHIP**
+
+# Interchange Fee Intelligence Platform
+
+### POC-2 | Payment Fee Calculator
+
+*Payment Rail Analytics, Cost Estimation & Scenario Analysis*
 
 A web-based payment fee estimation application designed to demonstrate how transaction characteristics influence payment processing costs. The application provides an interactive dashboard for exploring synthetic interchange, processor, and network fee calculations.
 
