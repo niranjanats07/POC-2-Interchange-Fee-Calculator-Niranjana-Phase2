@@ -147,7 +147,7 @@ export default function Home() {
 
       try {
         const response = await fetch(
-          "http://127.0.0.1:8000/api/calculate",
+          "/api/calculate",
           {
             method: "POST",
             headers: {
@@ -159,11 +159,7 @@ export default function Home() {
               mcc,
               channel,
               geography,
-
-              // Send the BASE rate only.
-              // FastAPI applies the scenario adjustments.
               interchange_rate: interchangeRate,
-
               processor_fee: processorFee,
             }),
           }

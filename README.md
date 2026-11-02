@@ -1,8 +1,8 @@
-# Real Rails Batch 8 — Interchange Fee Calculator
+﻿# Real Rails Batch 8 ΓÇö Interchange Fee Calculator
 
 ## Project Overview
 
-**Interchange Fee Calculator** is a production-style demonstration built for the **Real Rails Intelligence Library** as part of **Real Rails Batch 8 — PoC #2**.
+**Interchange Fee Calculator** is a production-style demonstration built for the **Real Rails Intelligence Library** as part of **Real Rails Batch 8 ΓÇö PoC #2**.
 
 The application helps everyday viewers, founders, SMBs and operators understand how payment-related fees can affect a transaction.
 
@@ -12,7 +12,7 @@ Users can select a payment scenario and see how different synthetic assumptions 
 >
 > The fee adjustments used by this calculator are synthetic assumptions created for demonstration purposes. They do not represent live card-network pricing, contractual merchant rates or actual network settlement economics.
 
-The dashboard is presented under the application name **Interchange Fee Intelligence**. The project identity remains **Real Rails Batch 8 — PoC #2**.
+The dashboard is presented under the application name **Interchange Fee Intelligence**. The project identity remains **Real Rails Batch 8 ΓÇö PoC #2**.
 
 ---
 
@@ -21,7 +21,7 @@ The dashboard is presented under the application name **Interchange Fee Intellig
 | **Field** | **Details** |
 |---|---|
 | Project | Real Rails Batch 8 |
-| PoC | #2 — Interchange Fee Calculator |
+| PoC | #2 ΓÇö Interchange Fee Calculator |
 | Rail | Payments |
 | Application Type | Payment fee estimation dashboard |
 | Data Mode | Synthetic / Demo |
@@ -311,30 +311,30 @@ The calculation endpoint accepts scenario inputs and returns values including th
 
 The backend health endpoint and calculation endpoint were tested during project verification.
 
-A sample ₹1,000 scenario returned:
+A sample Γé╣1,000 scenario returned:
 
 | **Result** | **Value** |
 |---|---:|
-| Interchange Fee | ₹20.00 |
-| Processor Cost | ₹3.00 |
-| Network Cost | ₹1.00 |
-| Total Fee | ₹24.00 |
-| Net Amount | ₹976.00 |
+| Interchange Fee | Γé╣20.00 |
+| Processor Cost | Γé╣3.00 |
+| Network Cost | Γé╣1.00 |
+| Total Fee | Γé╣24.00 |
+| Net Amount | Γé╣976.00 |
 | Effective Fee Rate | 2.40% |
 
 ---
 
 ## Example Fee Calculation
 
-For a transaction amount of ₹1,000:
+For a transaction amount of Γé╣1,000:
 
 | **Component** | **Amount** |
 |---|---:|
-| Interchange | ₹20.00 |
-| Processor | ₹3.00 |
-| Network | ₹1.00 |
-| **Total Fee** | **₹24.00** |
-| Net Amount | ₹976.00 |
+| Interchange | Γé╣20.00 |
+| Processor | Γé╣3.00 |
+| Network | Γé╣1.00 |
+| **Total Fee** | **Γé╣24.00** |
+| Net Amount | Γé╣976.00 |
 | Effective Fee Rate | 2.40% |
 
 These values are synthetic demonstration assumptions.
@@ -417,7 +417,7 @@ The following checks were performed during development:
 - Frontend development server startup
 - Backend health endpoint response
 - Backend `/api/calculate` endpoint
-- Sample ₹1,000 fee calculation
+- Sample Γé╣1,000 fee calculation
 - Frontend scenario update and calculation display
 - Desktop, tablet and mobile responsive layout checks
 - JSON assumptions export
@@ -441,7 +441,7 @@ Responsive checks were performed using browser device emulation. They are visual
 
 **Organization:** Infocreon Internship  
 **Batch:** 8  
-**Project:** Real Rails — Interchange Fee Calculator  
+**Project:** Real Rails ΓÇö Interchange Fee Calculator  
 **PoC:** #2  
 **Dashboard:** Interchange Fee Intelligence  
 **Developer / Architect:** Niranjana T Suresh
@@ -449,3 +449,119 @@ Responsive checks were performed using browser device emulation. They are visual
 ---
 
 *Developed as an internship proof-of-concept project using synthetic payment data.*
+
+
+## Phase 2 - Docker Containerization
+
+This Phase 2 setup packages the Next.js frontend and FastAPI backend into separate Docker containers.
+
+### Docker Architecture
+
+- **Frontend:** Next.js standalone production server.
+- **Backend:** Python FastAPI service running with Uvicorn.
+- **Container networking:** The frontend communicates with the backend using the Docker Compose service name `backend`.
+- **Backend health check:** Docker checks the backend root endpoint before starting the frontend.
+
+### Container Ports
+
+| Service | Local URL | Container Port |
+|---|---|---:|
+| Frontend | http://localhost:3001 | 3000 |
+| Backend | http://localhost:8001 | 8000 |
+
+The frontend uses `API_INTERNAL_URL=http://backend:8000` inside the Docker network. This allows the frontend container to reach the backend container without using localhost.
+
+### Prerequisites
+
+- Docker Desktop
+- Docker Compose
+- Docker Desktop configured to use Linux containers
+
+### Build and Start
+
+Run the following command from the project root:
+
+```powershell
+docker compose up --build
+```
+
+Open the dashboard:
+
+```text
+http://localhost:3001
+```
+
+Check backend availability:
+
+```text
+http://localhost:8001/
+```
+
+### Container Management
+
+Check container status:
+
+```powershell
+docker compose ps
+```
+
+Restart Phase 2 containers:
+
+```powershell
+docker compose restart
+```
+
+View recent logs:
+
+```powershell
+docker compose logs --tail 50
+```
+
+Stop Phase 2 containers:
+
+```powershell
+docker compose down
+```
+
+These commands operate on the services defined in this repository's Docker Compose project.
+
+### API Verification
+
+The frontend exposes the calculation endpoint:
+
+```text
+POST http://localhost:3001/api/calculate
+```
+
+The Next.js API route forwards calculation requests to the backend through the internal Docker network.
+
+### Local Container Validation
+
+The following Phase 2 checks have been completed:
+
+- Frontend Docker image built successfully.
+- Backend Docker image built successfully.
+- Both containers started successfully.
+- Backend health check reported healthy.
+- Frontend-to-backend API calculation request returned the expected results.
+- Dashboard amount-change interaction updated the displayed scenario.
+- Both containers restarted successfully.
+- API calculation succeeded after the container restart.
+
+A sample synthetic calculation for a transaction amount of 1000 returned:
+
+| Result | Value |
+|---|---:|
+| Interchange Fee | 20.00 |
+| Processor Cost | 3.00 |
+| Network Cost | 1.00 |
+| Total Fee | 24.00 |
+| Net Amount | 976.00 |
+| Effective Fee Rate | 2.40% |
+
+### Docker Limitations
+
+- The application uses synthetic demonstration assumptions, not live card-network pricing.
+- This Docker setup is intended for local container validation.
+- Cloud deployment and production publishing have not been claimed as completed.
+
