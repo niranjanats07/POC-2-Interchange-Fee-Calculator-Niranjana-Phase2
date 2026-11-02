@@ -1,20 +1,24 @@
 
 export async function POST(request: Request) {
-  const backendUrl =
-    process.env.API_INTERNAL_URL || "http://127.0.0.1:8001";
+  const backendUrl = process.env.API_INTERNAL_URL;
+
+  if (!backendUrl) {
+    console.error("API_INTERNAL_URL is not configured.");
+    return Response.json(
+      { detail: "Calculation backend is not configured." },
+      { status: 503 }
+    );
+  }
 
   try {
-    const response = await fetch(
-      `${backendUrl}/api/calculate`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: await request.text(),
-        cache: "no-store",
-      }
-    );
+    const response = await fetch(`${backendUrl}/api/calculate`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: await request.text(),
+      cache: "no-store",
+    });
 
     const responseBody = await response.text();
 
@@ -22,8 +26,7 @@ export async function POST(request: Request) {
       status: response.status,
       headers: {
         "Content-Type":
-          response.headers.get("Content-Type") ||
-          "application/json",
+          response.headers.get("Content-Type") || "application/json",
       },
     });
   } catch (error) {
