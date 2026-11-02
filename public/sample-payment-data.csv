@@ -1,0 +1,13 @@
+merchant_profile,card_type,mcc,channel,geography,transaction_amount,card_mix_percent,data_mode
+Small Retailer,Credit Card,Retail,Online,India,1000,60,Synthetic
+Small Retailer,Debit Card,Retail,Online,India,1000,30,Synthetic
+Small Retailer,Premium Card,Retail,Online,India,1000,10,Synthetic
+Restaurant,Credit Card,Restaurant,In-store,India,1500,50,Synthetic
+Restaurant,Debit Card,Restaurant,In-store,India,1500,40,Synthetic
+Restaurant,Premium Card,Restaurant,In-store,India,1500,10,Synthetic
+Travel Merchant,Credit Card,Travel,Online,United States,2000,55,Synthetic
+Travel Merchant,Debit Card,Travel,Online,United States,2000,30,Synthetic
+Travel Merchant,Premium Card,Travel,Online,United States,2000,15,Synthetic
+Digital Services,Credit Card,Digital Services,Mobile,European Union,1200,50,Synthetic
+Digital Services,Debit Card,Digital Services,Mobile,European Union,1200,35,Synthetic
+Digital Services,Premium Card,Digital Services,Mobile,European Union,1200,15,Synthetic
