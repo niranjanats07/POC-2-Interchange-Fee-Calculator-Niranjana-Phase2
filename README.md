@@ -1,6 +1,6 @@
 **INFOCREON INTERNSHIP**
 
-# Interchange Fee Intelligence Platform
+# Interchange Fee Intelligence 
 
 ### POC-2 | Payment Fee Calculator
 
