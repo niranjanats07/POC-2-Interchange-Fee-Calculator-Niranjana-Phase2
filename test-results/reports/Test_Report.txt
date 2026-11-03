@@ -1,0 +1,32 @@
+Discussion #4 - Selenium Quality Gate
+Application: https://poc-2-interchange-fee-frontend.onrender.com
+Browser: Google Chrome
+Automation: Selenium WebDriver 4
+Execution Result: PASS
+
+TEST RESULTS
+============
+
+PASS - Dashboard page load
+PASS - Frontend-to-backend API handshake: HTTP 200, total fee INR 24.00
+PASS - Initial calculation: total fee INR 24.00
+PASS - Recharts visualization rendered
+PASS - Desktop screenshot captured
+PASS - Amount interaction: INR 2,000 gives INR 48.00
+PASS - Debit Card interaction: total fee INR 40.00
+PASS - Participant intelligence panel opens
+PASS - Participant intelligence panel closes
+PASS - Project information and developer signature
+PASS - Responsive mobile layout at 390px
+PASS - Mobile screenshot captured
+
+EXECUTION SUMMARY
+=================
+Passed checks: 12
+Failed checks: 0
+Overall result: PASS
+
+EVIDENCE FILES
+==============
+Desktop screenshot: test-results\screenshots\discussion4-desktop.png
+Mobile screenshot: test-results\screenshots\discussion4-mobile.png

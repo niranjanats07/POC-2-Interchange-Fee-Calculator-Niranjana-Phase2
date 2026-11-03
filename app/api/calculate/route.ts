@@ -1,4 +1,3 @@
-
 export async function POST(request: Request) {
   const backendUrl = process.env.API_INTERNAL_URL;
 
